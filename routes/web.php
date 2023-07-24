@@ -34,5 +34,5 @@ require __DIR__.'/auth.php';
 
 Route::controller(AdminController::class)->group(function(){
 Route::get('/admin/logout','AdminDestroy')->name('admin.logout');
-Route::get('/admin/logout/page','AdminLogoutPage')->name('admin.logout.page');
+Route::get('logout','AdminLogoutPage')->name('admin.logout.page');
 });

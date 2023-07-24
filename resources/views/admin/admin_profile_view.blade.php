@@ -1,6 +1,6 @@
 @extends('admin_dashboard')
 @section('admin')
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 <div class="content">
 
         <!-- Start Content-->
@@ -26,7 +26,7 @@
                 <div class="col-lg-4 col-xl-4">
                     <div class="card text-center">
                         <div class="card-body">
-                            <img src="{{ asset('backend/assets/images/users/user-1.jpg') }}" class="rounded-circle avatar-lg img-thumbnail"
+                            <img src="{{ !empty($adminData->photo) ? url('upload/admin_image'.$adminData->photo) : url('upload/no_image.jpg')}}" class="rounded-circle avatar-lg img-thumbnail"
                                  alt="profile-image">
 
                             <h4 class="mb-0">{{ $adminData->name }}</h4>
@@ -37,13 +37,12 @@
 
                             <div class="text-start mt-3">
 
-                                <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ms-2">Geneva D. McKnight</span></p>
+                                <p class="text-muted mb-2 font-13"><strong>Full Name :</strong> <span class="ms-2">{{ $adminData->name }}</span></p>
 
                                 <p class="text-muted mb-2 font-13"><strong>Mobile :</strong><span class="ms-2">{{ $adminData->phone }}</span></p>
 
-                                <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ms-2">user@email.domain</span></p>
+                                <p class="text-muted mb-2 font-13"><strong>Email :</strong> <span class="ms-2">{{ $adminData->email }}</span></p>
 
-                                <p class="text-muted mb-1 font-13"><strong>Location :</strong> <span class="ms-2">USA</span></p>
                             </div>
 
                             <ul class="social-list list-inline mt-3 mb-0">
@@ -73,28 +72,51 @@
                             <div class="tab-content">
 
                                 <div class="" id="settings">
-                                    <form>
+<form action="{{ route('update.admin.profile') }}" method="post" >
+   @csrf
+    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal Info</h5>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="firstname" class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" id="firstname" placeholder="Enter Name" value="{{ $adminData->name }}">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" value="{{ $adminData->email }}">
+            </div>
+        </div> <!-- end col -->
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" name="phone" class="form-control" id="phone" placeholder="Enter phone" value="{{ $adminData->phone }}">
+            </div>
+        </div> <!-- end col -->
 
-                                        <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal Info</h5>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="firstname" class="form-label">First Name</label>
-                                                    <input type="text" class="form-control" id="firstname" placeholder="Enter first name">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label for="lastname" class="form-label">Last Name</label>
-                                                    <input type="text" class="form-control" id="lastname" placeholder="Enter last name">
-                                                </div>
-                                            </div> <!-- end col -->
-                                        </div> <!-- end row -->
+        <div class="col-md-12">
+            <div class="mb-3">
+                <label for="example-fileinput" class="form-label">Admin Profile Image</label>
+                <input type="file" id="image" class="form-control">
+                <br>
+                <img src="{{ !empty($adminData->photo) ? url('upload/admin_image/'.$adminData->photo) : url('upload/no_image.jpg')}}"
+                     class="rounded-circle avatar-lg img-thumbnail"
+                     id="showImage"
+                     alt="profile-image">
+            </div>
+        </div> <!-- end col -->
+        <div class="col-md-6">
+            <div class="mb-3">
 
-                                        <div class="text-end">
-                                            <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Save</button>
-                                        </div>
-                                    </form>
+            </div>
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+    <div class="text-end">
+        <button type="submit" class="btn btn-success waves-effect waves-light mt-2"><i class="mdi mdi-content-save"></i> Save</button>
+    </div>
+</form>
                                 </div>
                                 <!-- end settings content-->
 
@@ -109,5 +131,15 @@
         </div> <!-- container -->
 
     </div>
-
+<script type="text/javascript">
+$(document).ready(function (){
+    $('#image').change(function (e){
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $('#showImage').attr('src',e.target.result);
+        }
+        reader.readAsDataURL(e.target.files['0']);
+    })
+})
+</script>
 @endsection

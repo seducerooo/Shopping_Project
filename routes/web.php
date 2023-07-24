@@ -38,4 +38,5 @@ Route::get('logout','AdminLogoutPage')->name('admin.logout.page');
 
 
 Route::get('/admin/profile','AdminProfile')->name('admin.profile');
+    Route::post('update/admin/profile','UpdateAdminProfile')->name('update.admin.profile');
 });

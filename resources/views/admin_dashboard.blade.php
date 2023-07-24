@@ -25,6 +25,7 @@
     <!-- Head js -->
     <script src="{{ asset('backend/assets/js/head.js') }}"></script>
 
+
 </head>
 
 <!-- body start -->

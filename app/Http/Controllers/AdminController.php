@@ -27,4 +27,7 @@ class AdminController extends Controller
         $adminData = User::query()->find($id);
         return view('admin.admin_profile_view',compact('adminData'));
     }
+    public function UpdateAdminProfile(){
+
+    }
 }

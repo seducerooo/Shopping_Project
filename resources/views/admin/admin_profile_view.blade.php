@@ -26,7 +26,7 @@
                 <div class="col-lg-4 col-xl-4">
                     <div class="card text-center">
                         <div class="card-body">
-                            <img src="{{ !empty($adminData->photo) ? url('upload/admin_image'.$adminData->photo) : url('upload/no_image.jpg')}}" class="rounded-circle avatar-lg img-thumbnail"
+                            <img src="{{ !empty($adminData->photo) ? url('upload/admin_images/'.$adminData->photo) : url('upload/no_image.jpg') }}" class="rounded-circle avatar-lg img-thumbnail"
                                  alt="profile-image">
 
                             <h4 class="mb-0">{{ $adminData->name }}</h4>
@@ -72,7 +72,7 @@
                             <div class="tab-content">
 
                                 <div class="" id="settings">
-<form action="{{ route('update.admin.profile') }}" method="post" >
+<form action="{{ route('update.admin.store') }}" method="post" enctype="multipart/form-data">
    @csrf
     <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Personal Info</h5>
     <div class="row">
@@ -98,9 +98,9 @@
         <div class="col-md-12">
             <div class="mb-3">
                 <label for="example-fileinput" class="form-label">Admin Profile Image</label>
-                <input type="file" id="image" class="form-control">
+                <input name="photo" type="file" id="image" class="form-control">
                 <br>
-                <img src="{{ !empty($adminData->photo) ? url('upload/admin_image/'.$adminData->photo) : url('upload/no_image.jpg')}}"
+                <img src="{{ !empty($adminData->photo) ? url('upload/admin_images/'.$adminData->photo) : url('upload/no_image.jpg')}}"
                      class="rounded-circle avatar-lg img-thumbnail"
                      id="showImage"
                      alt="profile-image">
@@ -139,7 +139,7 @@ $(document).ready(function (){
             $('#showImage').attr('src',e.target.result);
         }
         reader.readAsDataURL(e.target.files['0']);
-    })
-})
+    });
+});
 </script>
 @endsection

@@ -31,15 +31,19 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::middleware(['auth'])->group(function (){
 
-Route::controller(AdminController::class)->group(function(){
-Route::get('/admin/logout','AdminDestroy')->name('admin.logout');
-Route::get('logout','AdminLogoutPage')->name('admin.logout.page');
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/admin/logout','AdminDestroy')->name('admin.logout');
+        Route::get('logout','AdminLogoutPage')->name('admin.logout.page');
 
 
-Route::get('/admin/profile','AdminProfile')->name('admin.profile');
-Route::post('admin/profile/store','StoreAdminProfile')->name('update.admin.store');
+        Route::get('/admin/profile','AdminProfile')->name('admin.profile');
+        Route::post('admin/profile/store','StoreAdminProfile')->name('update.admin.store');
 
-Route::get('/change/password','ChangePassword')->name('change.password');
-    Route::post('/update/password/{id}','UpdatePassword')->name('update.password');
+        Route::get('/change/password','ChangePassword')->name('change.password');
+        Route::post('/update/password/{id}','UpdatePassword')->name('update.password');
+    });
+
 });
+

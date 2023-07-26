@@ -39,4 +39,7 @@ Route::get('logout','AdminLogoutPage')->name('admin.logout.page');
 
 Route::get('/admin/profile','AdminProfile')->name('admin.profile');
 Route::post('admin/profile/store','StoreAdminProfile')->name('update.admin.store');
+
+Route::get('/change/password','ChangePassword')->name('change.password');
+    Route::post('/update/password/{id}','UpdatePassword')->name('update.password');
 });

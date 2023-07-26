@@ -61,12 +61,15 @@
                                 </label>
 
                                 <input name="login"
-                                       class="form-control"
+                                       class="form-control @error('login') is-invalid @enderror"
                                        type="text"
                                        id="login"
                                        required=""
                                        value="{{ old('login') }}"
                                        placeholder="Enter your Email / Name / Phone">
+                                @error('login')
+                                <span class="text-danger"> {{ $message }} </span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
@@ -77,7 +80,14 @@
                                 </label>
 
                                 <div class="input-group input-group-merge">
-                                    <input name="password" type="password" id="password" class="form-control" placeholder="Enter your password">
+                                    <input name="password"
+                                           type="password"
+                                           id="password"
+                                           class="form-control @error('password') is-invalid @enderror"
+                                           placeholder="Enter your password">
+                                    @error('password')
+                                    <span class="text-danger"> {{ $message }} </span>
+                                    @enderror
                                     <div class="input-group-text" data-password="false">
                                         <span class="password-eye"></span>
                                     </div>

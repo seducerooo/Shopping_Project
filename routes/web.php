@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,5 +46,9 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/update/password/{id}','UpdatePassword')->name('update.password');
     });
 
+});
+
+Route::controller(EmployeeController::class)->group(function(){
+    Route::get('/employee','EmployeePage')->name('employee');
 });
 

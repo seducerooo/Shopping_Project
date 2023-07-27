@@ -34,6 +34,8 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function (){
 
+
+// Admin Controller
     Route::controller(AdminController::class)->group(function(){
         Route::get('/admin/logout','AdminDestroy')->name('admin.logout');
         Route::get('logout','AdminLogoutPage')->name('admin.logout.page');
@@ -46,9 +48,15 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/update/password/{id}','UpdatePassword')->name('update.password');
     });
 
+// Employee Controller
+    Route::controller(EmployeeController::class)->group(function(){
+        Route::get('/all/employee','AllEmployee')->name('all.employee');
+        Route::get('/add/employee','AddEmployee')->name('add.employee');
+        Route::post('/store/employee','StoreEmployee')->name('employee.store');
+    });
+
+
 });
 
-Route::controller(EmployeeController::class)->group(function(){
-    Route::get('/employee','EmployeePage')->name('employee');
-});
+
 

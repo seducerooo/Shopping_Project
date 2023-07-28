@@ -45,7 +45,7 @@
 
 
                                 <tbody>
-                                @foreach($allEmployee as $employee) @endforeach
+                                @foreach($allEmployee as $employee)
                                 <tr>
                                     <td>{{ $employee->id }}</td>
                                     <td><img
@@ -61,10 +61,11 @@
                                     <td>{{ $employee->phone }}</td>
                                     <td>{{ $employee->salary }}</td>
                                     <th>
-                                        <a href="#" class="btn btn-primary">edit</a>
-                                        <a href="#" class="btn btn-danger">delete</a>
+                                        <a href="{{ route('employee.edit',$employee->id) }}" class="btn btn-primary">edit</a>
+                                        <a href="{{ route('employee.destroy',$employee->id) }}" class="btn btn-danger" id="delete">delete</a>
                                     </th>
                                 </tr>
+                                @endforeach
 
                                 </tbody>
                             </table>

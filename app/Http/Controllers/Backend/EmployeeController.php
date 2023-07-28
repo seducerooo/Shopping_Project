@@ -65,4 +65,67 @@ class EmployeeController extends Controller
         ]);
         return to_route('all.employee')->with($notification[0]);
     }
+
+    public function EditEmployee(Request $request,string $id){
+        $employee = Employee::query()->find($id);
+        return view('backend.employee.edit_employee',compact('employee'));
+    }
+
+
+    public function UpdateEmployee(Request $request,string $id){
+        $employee_id = $id;
+        if ($request->file('image')){
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()). '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(300,300)->save('upload/employee_images/'.$name_gen);
+            $save_url = 'upload/employee_images/'.$name_gen;
+
+            $emp_update = Employee::query()->find($employee_id);
+            $emp_update->name = $request['name'];
+            $emp_update->email = $request['email'];
+            $emp_update->phone = $request['phone'];
+            $emp_update->address = $request['address'];
+            $emp_update->experience = $request['experience'];
+            $emp_update->salary = $request['salary'];
+            $emp_update->vacation = $request['vacation'];
+            $emp_update->city = $request['city'];
+            @unlink(public_path($emp_update->image));
+            $emp_update->image = $save_url;
+            $emp_update->save();
+            $notification = array([
+                'message' => 'Employee Recorde With Image Updated Successfully',
+                'alert-type' => 'success'
+            ]);
+            return to_route('all.employee')->with($notification[0]);
+        }
+        $emp_update = Employee::query()->find($employee_id);
+        $emp_update->name = $request['name'];
+        $emp_update->email = $request['email'];
+        $emp_update->phone = $request['phone'];
+        $emp_update->address = $request['address'];
+        $emp_update->experience = $request['experience'];
+        $emp_update->salary = $request['salary'];
+        $emp_update->vacation = $request['vacation'];
+        $emp_update->city = $request['city'];
+        $emp_update->save();
+        $notification = array([
+            'message' => 'Employee Recorde Without Image Updated Successfully',
+            'alert-type' => 'success'
+        ]);
+        return to_route('all.employee')->with($notification[0]);
+
+
+    }
+
+
+    public function DestroyEmployee(string $id){
+        $emp_destroy = Employee::query()->find($id);
+        @unlink(public_path($emp_destroy->image));
+        $emp_destroy->delete();
+        $notification = array([
+            'message' => 'Employee Recorde Deleted Successfully',
+            'alert-type' => 'success'
+        ]);
+        return to_route('all.employee')->with($notification[0]);
+    }
 }

@@ -20,12 +20,12 @@
 
 
                 <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                    <a href="#sidebarEmployee" data-bs-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
                         <span> Employee Manage </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarEcommerce">
+                    <div class="collapse" id="sidebarEmployee">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('all.employee') }}">All Employee</a>
@@ -37,12 +37,12 @@
                     </div>
                 </li>
                 <li>
-                    <a href="#sidebarEcommerce" data-bs-toggle="collapse">
+                    <a href="#sidebarCustomer" data-bs-toggle="collapse">
                         <i class="mdi mdi-cart-outline"></i>
                         <span> Customer Manage </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarEcommerce">
+                    <div class="collapse" id="sidebarCustomer">
                         <ul class="nav-second-level">
                             <li>
                                 <a href="{{ route('all.customer') }}">All Customer</a>

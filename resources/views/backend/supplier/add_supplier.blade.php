@@ -118,12 +118,14 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label for="type" class="form-label">Supplier Type :</label>
-                <input type="text"
-                       name="type"
-                       class="form-control @error('type') is-invalid @enderror"
-                       id="type"
-                       placeholder="Enter Type"
-                       value="">
+                <select name="type" id="inputState" class="form-select @error('type') is-invalid @enderror">
+                    <option selected=""> Select Type </option>
+                    <option value="Distributor">
+                        Distributor</option>
+                    <option value="Whole Seller">
+                        Whole Seller
+                    </option>
+                </select>
                 @error('type')
                 <span class="text-danger"> {{ $message }} </span>
                 @enderror

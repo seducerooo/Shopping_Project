@@ -117,12 +117,19 @@
         <div class="col-md-6">
             <div class="mb-3">
                 <label for="type" class="form-label">Supplier Type :</label>
-                <input type="text"
-                       name="type"
-                       class="form-control @error('type') is-invalid @enderror"
-                       id="type"
-                       placeholder="Enter Type"
-                       value="{{ $supplier->type }}">
+                <select name="type" id="inputState" class="form-select @error('type') is-invalid @enderror">
+                    <option selected="" class="disabled"> Select Type </option>
+                    <option value="Distributor"
+                        {{ $supplier->type == 'Distributor' ?
+                           'selected' : ''  }}>
+                        Distributor
+                    </option>
+                    <option value="Whole Seller"
+                        {{ $supplier->type == 'Whole Seller' ?
+                           'selected' : ''  }}>
+                        Whole Seller
+                    </option>
+                </select>
                 @error('type')
                 <span class="text-danger"> {{ $message }} </span>
                 @enderror

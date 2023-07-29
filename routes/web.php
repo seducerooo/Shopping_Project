@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\backend\SalaryController;
 use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -88,7 +89,10 @@ Route::middleware(['auth'])->group(function (){
     });
 
 
-
+    // Advance Salary Controller
+    Route::controller(SalaryController::class)->group(function(){
+        Route::get('/add/advance/salary','AddAdvanceSalary')->name('add.advance.salary');
+    });
 
 
 });

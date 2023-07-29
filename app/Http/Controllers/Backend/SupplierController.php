@@ -59,6 +59,7 @@ class SupplierController extends Controller
         $supplier->phone = $request['phone'];
         $supplier->address = $request['address'];
         $supplier->shopname = $request['shopname'];
+        $supplier->type = $request['type'];
         $supplier->account_holder = $request['account_holder'];
         $supplier->account_number = $request['account_number'];
         $supplier->bank_name = $request['bank_name'];

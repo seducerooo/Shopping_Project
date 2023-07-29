@@ -12,11 +12,11 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Admin Profile</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Supplier</a></li>
 
                             </ol>
                         </div>
-                        <h4 class="page-title">Add Employee</h4>
+                        <h4 class="page-title">Add Supplier</h4>
                     </div>
                 </div>
             </div>
@@ -31,13 +31,13 @@
                             <div class="tab-content">
 
                                 <div class="" id="settings">
-<form action="{{ route('customer.store') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('supplier.store') }}" method="post" enctype="multipart/form-data">
     @csrf
-    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Employee Info</h5>
+    <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Supplier Info</h5>
     <div class="row">
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="firstname" class="form-label">Customer Name</label>
+                <label for="firstname" class="form-label">Supplier Name</label>
                 <input type="text"
                        name="name"
                        class="form-control @error('name') is-invalid @enderror"
@@ -52,7 +52,7 @@
         </div>
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="email" class="form-label">Customer Email</label>
+                <label for="email" class="form-label">Supplier Email</label>
                 <input type="email"
                        name="email"
                        class="form-control @error('email') is-invalid @enderror"
@@ -67,7 +67,7 @@
         </div> <!-- end col -->
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="phone" class="form-label">Customer Phone</label>
+                <label for="phone" class="form-label">Supplier Phone</label>
                 <input type="text"
                        name="phone"
                        class="form-control @error('phone') is-invalid @enderror"
@@ -83,7 +83,7 @@
 
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="address" class="form-label">Customer Address :</label>
+                <label for="address" class="form-label">Supplier Address :</label>
                 <input type="text"
                        name="address"
                        class="form-control @error('address') is-invalid @enderror"
@@ -100,7 +100,7 @@
 
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="shopname" class="form-label">Customer Shop Name :</label>
+                <label for="shopname" class="form-label">Supplier Shop Name :</label>
                 <input type="text"
                        name="shopname"
                        class="form-control @error('shopname') is-invalid @enderror"
@@ -117,7 +117,24 @@
 
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="account_holder" class="form-label">customer Account holder</label>
+                <label for="type" class="form-label">Supplier Type :</label>
+                <input type="text"
+                       name="type"
+                       class="form-control @error('type') is-invalid @enderror"
+                       id="type"
+                       placeholder="Enter Type"
+                       value="">
+                @error('type')
+                <span class="text-danger"> {{ $message }} </span>
+                @enderror
+
+            </div>
+        </div> <!-- end col -->
+
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label for="account_holder" class="form-label">Supplier Account holder</label>
                 <input type="text"
                        name="account_holder"
                        class="form-control @error('account_holder') is-invalid @enderror"
@@ -134,7 +151,7 @@
 
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="account_number" class="form-label">Customer Account Number</label>
+                <label for="account_number" class="form-label">Supplier Account Number</label>
                 <input type="text"
                        name="account_number"
                        class="form-control @error('account_number') is-invalid @enderror"
@@ -149,7 +166,7 @@
         </div>
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="bank_name" class="form-label">Customer Bank Name</label>
+                <label for="bank_name" class="form-label">Supplier Bank Name</label>
                 <input type="text"
                        name="bank_name"
                        class="form-control @error('bank_name') is-invalid @enderror"
@@ -164,7 +181,7 @@
         </div>
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="bank_branch" class="form-label">Customer Bank Branch</label>
+                <label for="bank_branch" class="form-label">Supplier Bank Branch</label>
                 <input type="text"
                        name="bank_branch"
                        class="form-control @error('bank_branch') is-invalid @enderror"
@@ -180,7 +197,7 @@
 
         <div class="col-md-6">
             <div class="mb-3">
-                <label for="city" class="form-label">Employee City</label>
+                <label for="city" class="form-label">Supplier City</label>
                 <input type="text"
                        name="city"
                        class="form-control @error('city') is-invalid @enderror"
@@ -196,7 +213,7 @@
 
         <div class="col-md-12">
             <div class="mb-3">
-                <label for="example-fileinput" class="form-label">Employee Image</label>
+                <label for="example-fileinput" class="form-label">Supplier Image</label>
                 <input name="image"
                        type="file"
                        id="image"

@@ -18,7 +18,7 @@
                                 <li class="breadcrumb-item active">Datatables</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">All Customer</h4>
+                        <h4 class="page-title">All Supplier</h4>
                     </div>
                 </div>
             </div>
@@ -39,30 +39,32 @@
                                     <th>Email</th>
                                     <th>Phone</th>
                                     <th>Shop Name</th>
+                                    <th>Type</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
 
 
                                 <tbody>
-                                @foreach($allCustomer as $customer)
+                                @foreach($allSupplier as $supplier)
                                 <tr>
-                                    <td>{{ $customer->id }}</td>
+                                    <td>{{ $supplier->id }}</td>
                                     <td><img
-                                        src="{{ !empty($customer->image) ?
-                                                asset($customer->image) :
+                                        src="{{ !empty($supplier->image) ?
+                                                asset($supplier->image) :
                                                 url('upload/no_image.jpg') }}"
                                         width="50px"
                                         height="40px"
                                         />
                                     </td>
-                                    <td>{{ $customer->name }}</td>
-                                    <td>{{ $customer->email }}</td>
-                                    <td>{{ $customer->phone }}</td>
-                                    <td>{{ $customer->shopname }}</td>
+                                    <td>{{ $supplier->name }}</td>
+                                    <td>{{ $supplier->email }}</td>
+                                    <td>{{ $supplier->phone }}</td>
+                                    <td>{{ $supplier->shopname }}</td>
+                                    <td>{{ $supplier->type }}</td>
                                     <th>
-                                        <a href="{{ route('customer.edit',$customer->id) }}" class="btn btn-primary">edit</a>
-                                        <a href="{{ route('customer.destroy',$customer->id) }}" class="btn btn-danger" id="delete">delete</a>
+                                        <a href="{{ route('supplier.edit',$supplier->id) }}" class="btn btn-primary">edit</a>
+                                        <a href="{{ route('supplier.destroy',$supplier->id) }}" class="btn btn-danger" id="delete">delete</a>
                                     </th>
                                 </tr>
                                 @endforeach

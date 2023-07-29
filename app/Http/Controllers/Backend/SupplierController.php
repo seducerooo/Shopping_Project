@@ -140,4 +140,9 @@ class SupplierController extends Controller
         ]);
         return to_route('all.supplier')->with($notification[0]);
     }
+
+    public function DetailSupplier(Request $request,string $id){
+        $supplier = Supplier::query()->findOrFail($id);
+        return view('backend.supplier.details_supplier',compact('supplier'));
+    }
 }

@@ -65,6 +65,7 @@
                                     <th>
                                         <a href="{{ route('supplier.edit',$supplier->id) }}" class="btn btn-primary">edit</a>
                                         <a href="{{ route('supplier.destroy',$supplier->id) }}" class="btn btn-danger" id="delete">delete</a>
+                                        <a href="{{ route('details.supplier',$supplier->id) }}" class="btn btn-blue">details</a>
                                     </th>
                                 </tr>
                                 @endforeach

@@ -84,6 +84,7 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/edit/supplier/{id}','EditSupplier')->name('supplier.edit');
         Route::post('/update/supplier/{id}','UpdateSupplier')->name('supplier.update');
         Route::get('/delete/supplier/{id}','DestroySupplier')->name('supplier.destroy');
+        Route::get('/details/supplier/{id}','DetailSupplier')->name('details.supplier');
     });
 
 

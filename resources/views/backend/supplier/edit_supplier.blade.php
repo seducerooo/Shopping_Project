@@ -118,7 +118,7 @@
             <div class="mb-3">
                 <label for="type" class="form-label">Supplier Type :</label>
                 <select name="type" id="inputState" class="form-select @error('type') is-invalid @enderror">
-                    <option selected="" class="disabled"> Select Type </option>
+                    <option selected="" disabled> Select Type </option>
                     <option value="Distributor"
                         {{ $supplier->type == 'Distributor' ?
                            'selected' : ''  }}>
@@ -237,7 +237,7 @@
                 <span class="text-danger"> {{ $message }} </span>
                 @enderror
                 <br>
-                <img src="{{ !empty( $supplier->image) ? url($supplier->image) : 'upload/no_image.jpg' }}"
+                <img src="{{ asset($supplier->image) }}"
                      class="rounded-circle avatar-lg img-thumbnail"
                      id="showImage"
                      alt="profile-image">

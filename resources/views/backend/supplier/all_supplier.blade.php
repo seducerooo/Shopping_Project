@@ -63,9 +63,9 @@
                                     <td>{{ $supplier->shopname }}</td>
                                     <td>{{ $supplier->type }}</td>
                                     <th>
-                                        <a href="{{ route('supplier.edit',$supplier->id) }}" class="btn btn-primary">edit</a>
-                                        <a href="{{ route('supplier.destroy',$supplier->id) }}" class="btn btn-danger" id="delete">delete</a>
-                                        <a href="{{ route('details.supplier',$supplier->id) }}" class="btn btn-blue">details</a>
+                                        <a href="{{ route('supplier.edit',$supplier->id) }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="{{ route('supplier.destroy',$supplier->id) }}" class="btn btn-danger" id="delete"><i class="fa-solid fa-trash"></i></a>
+                                        <a href="{{ route('details.supplier',$supplier->id) }}" class="btn btn-blue"><i class="fa-solid fa-circle-info"></i></a>
                                     </th>
                                 </tr>
                                 @endforeach

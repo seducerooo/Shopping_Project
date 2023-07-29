@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +71,23 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/update/customer/{id}','UpdateCustomer')->name('customer.update');
         Route::get('/delete/customer/{id}','DestroyCustomer')->name('customer.destroy');
     });
+
+
+
+
+    // Supplier Controller
+    Route::controller(SupplierController::class)->group(function(){
+        Route::get('/all/supplier','AllSupplier')->name('all.supplier');
+        Route::get('/add/supplier','AddSupplier')->name('add.supplier');
+        Route::post('/store/supplier','StoreSupplier')->name('supplier.store');
+
+        Route::get('/edit/supplier/{id}','EditSupplier')->name('supplier.edit');
+        Route::post('/update/supplier/{id}','UpdateSupplier')->name('supplier.update');
+        Route::get('/delete/supplier/{id}','DestroySupplier')->name('supplier.destroy');
+    });
+
+
+
 
 
 });

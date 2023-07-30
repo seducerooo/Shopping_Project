@@ -92,6 +92,12 @@ Route::middleware(['auth'])->group(function (){
     // Advance Salary Controller
     Route::controller(SalaryController::class)->group(function(){
         Route::get('/add/advance/salary','AddAdvanceSalary')->name('add.advance.salary');
+        Route::post('/advance/salary/store','AdvanceSalaryStore')->name('advance.salary.store');
+        Route::get('/all/advance/salary','AllAdvanceSalary')->name('all.advance.salary');
+
+        Route::get('/advance/salary/edit/{id}','AdvanceSalaryEdit')->name('advance.salary.edit');
+        Route::post('/advance/salary/update/{id}','AdvanceSalaryUpdate')->name('advance.salary.update');
+        Route::get('/advance/salary/delete/{id}','AdvanceSalaryDestroy')->name('advance.salary.delete');
     });
 
 

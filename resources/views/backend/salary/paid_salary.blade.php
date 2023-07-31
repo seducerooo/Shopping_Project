@@ -31,7 +31,7 @@
                             <div class="tab-content">
 
                                 <div class="" id="settings">
-<form action="{{ route('advance.salary.store') }}" method="post">
+<form action="{{ route('employee.salary.store',$paysalary->id) }}" method="post">
 @csrf
 <h5 class="mb-4 text-uppercase"><i class="mdi mdi-account-circle me-1"></i> Paid Salary</h5>
 <div class="row">
@@ -49,8 +49,9 @@
 
     <div class="col-md-6">
         <div class="mb-3">
-            <label for="employee_id" class="form-label">Salary Month :</label>
+            <label for="salary_month" class="form-label">Salary Month :</label>
             <strong style="color:#fff;">{{ date("F",strtotime('-1')) }} </strong>
+            <input type="hidden" name="salary_month" value="{{ date("F",strtotime('-1')) }}">
         </div>
     </div> <!-- end col -->
 
@@ -59,26 +60,29 @@
 
     <div class="col-md-6">
         <div class="mb-3">
-            <label for="employee_id" class="form-label">Employee Salary :</label>
+            <label for="paid_amount" class="form-label">Employee Salary :</label>
             <strong style="color:#fff;">{{ $paysalary->salary }} </strong>
+            <input type="hidden" name="paid_amount" value="{{ $paysalary->salary }}">
         </div>
     </div> <!-- end col -->
 
 
     <div class="col-md-6">
         <div class="mb-3">
-            <label for="employee_id" class="form-label">Employee Salary :</label>
+            <label for="advance_salary" class="form-label">Employee Advance Salary :</label>
             <strong style="color:#fff;">{{ $paysalary['advance']['advance_salary'] }} </strong>
+            <input type="hidden" name="paid_amount" value="{{ $paysalary['advance']['advance_salary'] }}">
+
         </div>
     </div> <!-- end col -->
 
 
     <div class="col-md-6">
         <div class="mb-3">
-            <label for="employee_id" class="form-label">Due Salary :</label>
+            <label for="due_salary" class="form-label">Due Salary :</label>
             <strong style="color:#fff;">
                 @php
-                    $amount = (int)$paysalary->salary -  (int)$paysalary['advance']['advance_salary'];
+                    $amount = $paysalary->salary -  $paysalary['advance']['advance_salary'];
                 @endphp
                 @if($paysalary['advance']['advance_salary'] == NULL)
                     <strong style="color:#fff;"> No Salary</strong>
@@ -86,6 +90,7 @@
                     <strong style="color:#fff;">{{ round($amount) }}</strong>
                 @endif
                 {{ $amount }}
+                <input type="hidden" name="due_salary" value="{{ $amount }}">
             </strong>
         </div>
     </div> <!-- end col -->

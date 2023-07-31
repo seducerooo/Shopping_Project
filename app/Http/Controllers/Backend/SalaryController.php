@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\AdvanceSalary;
 use App\Models\Employee;
+use App\Models\PaySalary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -86,12 +87,25 @@ class SalaryController extends Controller
     }
     public function PaySalary(){
         $employees = Employee::query()->latest()->get();
-
-
         return view('backend.salary.pay_salary',compact('employees'));
     }
     public function PayNowSalary(string $id){
         $paysalary = Employee::query()->findOrFail($id);
         return view('backend.salary.paid_salary',compact('paysalary'));
+    }
+    public function PaySalaryStore(Request $request,string $id){
+
+        $paySalary = new PaySalary();
+        $paySalary->employee_id = $request['id'];
+        $paySalary->salary_month = $request['salary_month'];
+        $paySalary->advance_salary = $request['advance_salary'];
+        $paySalary->paid_amount = $request['paid_amount'];
+        $paySalary->due_salary = $request['due_salary'];
+        $paySalary->save();
+        $notification = array(
+            'message' => 'advance Salary Deleted Successfully ',
+            'alert-type' => 'success'
+        );
+        return to_route('pay.salary')->with($notification);
     }
 }

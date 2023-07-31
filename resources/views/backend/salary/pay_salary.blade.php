@@ -39,6 +39,7 @@
         <th>Month</th>
         <th>Salary</th>
         <th>Advance Salary</th>
+        <th>Due Salary</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -52,23 +53,17 @@
             <td>{{ $employee['name'] }}</td>
             <td> <span class="badge bg-info">{{ date("F",strtotime('-1 month')) }} </span></td>
             <td>{{ $employee['salary'] }}</td>
-
-            @if( $employee['advance']['advance_salary']  !== null )
-                <td>No advance</td>
+            @if( $employee['advance']['advance_salary'] == null )
+                <td> No Advance Salary</td>
             @else
-               <td> {{  $employee['advance']['advance_salary'] }} </td>
+                <td> {{ $employee['advance']['advance_salary'] }}</td>
             @endif
             @php
-                $amount = $employee->salary -  $employee['advance']['advance_salary'];
+            $amount = $employee['salary'] - $employee['advance']['advance_salary']
             @endphp
-            <td>
-
-                <strong style="color:#fff;">{{ round($amount) }} </strong>
-            </td>
-            <td>{{ $employee->paid_amount }}</td>
-            <td>{{ $employee->due_salary }}</td>
+            <td>{{ $amount }}</td>
             <th>
-                <a href="{{ route('advance.salary.edit',$employee->id) }}" class="btn btn-primary">Pay Now</a>
+                <a href="{{ route('pay.now.salary',$employee->id) }}" class="btn btn-primary">Pay Now</a>
             </th>
         </tr>
     @endforeach

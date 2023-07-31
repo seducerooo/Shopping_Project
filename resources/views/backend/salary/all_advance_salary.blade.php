@@ -51,7 +51,8 @@
                                         <<td><img src="{{ asset($salary['employee']['image']) }}" width="30px" height="30px" ></td>
                                         <td>{{ $salary['employee']['name'] }}</td>
                                         <td>{{ $salary->month }}</td>
-                                        <td>{{ $salary->year }}</td>@if( $salary['advance_salary'] == NULL)
+                                        <td>{{ $salary->year }}</td>
+                                        @if( $salary['advance_salary'] == NULL)
                                             <td>No advance</td>
                                         @else
                                             <td> {{  $salary['advance_salary'] }} </td>

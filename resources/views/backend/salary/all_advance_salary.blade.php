@@ -18,7 +18,7 @@
                                 <li class="breadcrumb-item active">Datatables</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">All Employee</h4>
+                        <h4 class="page-title">All Advance Salary</h4>
                     </div>
                 </div>
             </div>
@@ -51,8 +51,11 @@
                                         <<td><img src="{{ asset($salary['employee']['image']) }}" width="30px" height="30px" ></td>
                                         <td>{{ $salary['employee']['name'] }}</td>
                                         <td>{{ $salary->month }}</td>
-                                        <td>{{ $salary->year }}</td>
-                                        <td>{{ $salary->advance_salary }}</td>
+                                        <td>{{ $salary->year }}</td>@if( $salary['advance_salary'] == NULL)
+                                            <td>No advance</td>
+                                        @else
+                                            <td> {{  $salary['advance_salary'] }} </td>
+                                        @endif
                                         <th>
                                             <a href="{{ route('advance.salary.edit',$salary->id) }}" class="btn btn-primary">edit</a>
                                             <a href="{{ route('advance.salary.delete',$salary->id) }}" class="btn btn-danger" id="delete">delete</a>

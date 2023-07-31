@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdvanceSalary;
@@ -21,7 +21,6 @@ class SalaryController extends Controller
         $validateData = $request->validate([
             'month'=> 'required',
             'year'=> 'required',
-            'advance_salary'=> 'required|max:255',
         ]);
         $month = $request['month'];
         $employee_id = $request['employee_id'];
@@ -84,5 +83,15 @@ class SalaryController extends Controller
             'alert-type' => 'success'
         );
         return to_route('all.advance.salary')->with($notification);
+    }
+    public function PaySalary(){
+        $employees = Employee::query()->latest()->get();
+
+
+        return view('backend.salary.pay_salary',compact('employees'));
+    }
+    public function PayNowSalary(string $id){
+        $paysalary = Employee::query()->findOrFail($id);
+        return view('backend.salary.paid_salary',compact('paysalary'));
     }
 }

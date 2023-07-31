@@ -108,4 +108,12 @@ class SalaryController extends Controller
         );
         return to_route('pay.salary')->with($notification);
     }
+    public function MonthSalary(){
+        $paidSalaries = PaySalary::query()->latest()->get();
+        return view('backend.salary.month_salary',compact('paidSalaries'));
+    }
+    public function HistorySalary(string $id){
+        $paysalary = PaySalary::query()->findOrFail($id);
+        return view('backend.salary.history_salary',['paysalary' => $paysalary]);
+    }
 }

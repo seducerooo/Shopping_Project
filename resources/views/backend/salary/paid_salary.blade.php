@@ -65,16 +65,24 @@
             <input type="hidden" name="paid_amount" value="{{ $paysalary->salary }}">
         </div>
     </div> <!-- end col -->
+    <div class="col-md-6">
+        <div class="mb-3">
+            <label for="advance_salary" class="form-label">Employee Advance Salary :</label>
+            <strong style="color:#fff;">{{ $paysalary['salary'] }} </strong>
+            <input type="hidden" name="paid_amount" value="{{ $paysalary['salary'] }}">
 
+        </div>
+    </div> <!-- end col -->
 
     <div class="col-md-6">
         <div class="mb-3">
             <label for="advance_salary" class="form-label">Employee Advance Salary :</label>
             <strong style="color:#fff;">{{ $paysalary['advance']['advance_salary'] }} </strong>
-            <input type="hidden" name="paid_amount" value="{{ $paysalary['advance']['advance_salary'] }}">
+            <input type="hidden" name="advance_salary" value="{{ $paysalary['advance']['advance_salary'] }}">
 
         </div>
     </div> <!-- end col -->
+
 
 
     <div class="col-md-6">
@@ -84,7 +92,7 @@
                 @php
                     $amount = $paysalary->salary -  $paysalary['advance']['advance_salary'];
                 @endphp
-                @if($paysalary['advance']['advance_salary'] == NULL)
+                @if( isset($paysalary['advance']['advance_salary']) == NULL)
                     <strong style="color:#fff;"> No Salary</strong>
                 @else
                     <strong style="color:#fff;">{{ round($amount) }}</strong>

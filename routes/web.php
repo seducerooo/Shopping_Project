@@ -108,6 +108,10 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/pay/salary','PaySalary')->name('pay.salary');
         Route::get('/pay/now/salary/{id}','PayNowSalary')->name('pay.now.salary');
         Route::post('/pay/salary/store/{id}','PaySalaryStore')->name('employee.salary.store');
+
+        Route::get('/month/salary','MonthSalary')->name('month.salary');
+
+        Route::get('/history/salary/{id}','HistorySalary')->name('history.salary');
     });
 
 

@@ -13,12 +13,12 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <a href="{{ route('add.customer') }}" class="btn btn-primary rounded-pill waves-effect waves-light">
-                                    Add Customer
+                                <a href="{{ route('add.employee.attend') }}" class="btn btn-primary rounded-pill waves-effect waves-light">
+                                    Add Employee Attendance
                                 </a>
                             </ol>
                         </div>
-                        <h4 class="page-title">All Customer</h4>
+                        <h4 class="page-title">All attendance</h4>
                     </div>
                 </div>
             </div>
@@ -36,35 +36,32 @@
                                     <th>id</th>
                                     <th>Image</th>
                                     <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Phone</th>
-                                    <th>Shop Name</th>
+                                    <th>Date</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
 
 
                                 <tbody>
-                                @foreach($allCustomer as $customer)
-                                <tr>
-                                    <td>{{ $customer->id }}</td>
-                                    <td><img
-                                        src="{{ !empty($customer->image) ?
-                                                asset($customer->image) :
+                                @foreach($allData as $data)
+                                    <tr>
+                                        <td>{{ $data->id }}</td>
+                                        <td><img
+                                                src="{{ !empty($data['employee']['image']) ?
+                                                asset($data['employee']['image']) :
                                                 url('upload/no_image.jpg') }}"
-                                        width="50px"
-                                        height="40px"
-                                        />
-                                    </td>
-                                    <td>{{ $customer->name }}</td>
-                                    <td>{{ $customer->email }}</td>
-                                    <td>{{ $customer->phone }}</td>
-                                    <td>{{ $customer->shopname }}</td>
-                                    <th>
-                                        <a href="{{ route('customer.edit',$customer->id) }}" class="btn btn-primary">edit</a>
-                                        <a href="{{ route('customer.destroy',$customer->id) }}" class="btn btn-danger" id="delete">delete</a>
-                                    </th>
-                                </tr>
+                                                width="50px"
+                                                height="40px"
+                                            />
+                                        </td>
+                                        <td>{{ $data['employee']['name'] }}</td>
+                                        <td>   {{ date('y-m-d',strtotime($data->date))  }}</td>
+                                        <td>
+                                            <a href="{{ route('customer.edit',$data->id) }}" class="btn btn-primary">view</a>
+                                            <a href="{{ route('customer.edit',$data->id) }}" class="btn btn-primary">Edit</a>
+
+                                        </td>
+                                    </tr>
                                 @endforeach
 
                                 </tbody>

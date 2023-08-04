@@ -57,8 +57,8 @@
                                         <td>{{ $data['employee']['name'] }}</td>
                                         <td>   {{ date('y-m-d',strtotime($data->date))  }}</td>
                                         <td>
-                                            <a href="{{ route('customer.edit',$data->id) }}" class="btn btn-primary">view</a>
-                                            <a href="{{ route('customer.edit',$data->id) }}" class="btn btn-primary">Edit</a>
+                                            <a href="{{ route('edit.employee.attend',$data->date) }}" class="btn btn-primary">view</a>
+                                            <a href="{{ route('edit.employee.attend',$data->date) }}" class="btn btn-primary">Edit</a>
 
                                         </td>
                                     </tr>

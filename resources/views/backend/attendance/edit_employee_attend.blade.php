@@ -30,13 +30,9 @@
                 <div class="col-12">
                     <div class="page-title-box">
                         <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <h4>
-
-
-                                    <a href="  " class="btn btn-primary float-sm-right"> <i class="fas fa-list"></i>Employee Attendance List</a>
-                                </h4>
-                            </ol>
+                            <h4>
+                                <a href="{{ route('employee.attend.list') }}" class="btn btn-primary float-sm-right"> <i class="fas fa-list"></i> Employee Attendance List</a>
+                            </h4>
                         </div>
                     </div>
                 </div>
@@ -50,11 +46,19 @@
 
 
                         <div class="card-body">
+                            <h4>Edit Employee Attendance</h4>
+                            <br>
 <form action="{{ route('employee.attend.store') }}" method="post" id="myForm">
     @csrf
     <div class="form-group col-md-4">
         <label for="date" class="control-label">Attendance Date</label>
-        <input type="date" name="date" id="date" class="checkdate form-control form-control-sm singledatepicker" placeholder="Attendance Date" autocomplete="off">
+        <input type="date"
+               name="date"
+               id="date"
+               class="checkdate form-control form-control-sm singledatepicker"
+               placeholder="Attendance Date"
+               value="{{ date("Y-M-D",strtotime($editData['0']['date'])) }}"
+               autocomplete="off">
     </div>
     <table class="table sm table-bordered table-striped dt-responsive" style="width: 100%">
         <thead>
@@ -71,33 +75,19 @@
         </thead>
         <tbody>
         @foreach ($employees as $key => $employee)
-            <tr id="div {{$employee->id}}" class="text-center">
-
-{{--                <input type="hidden" name="employee_id[]" value="{{$employee->id}}" class="employee_id">--}}
+            <tr  class="text-center">
+                <input type="hidden" name="employee_id[]" value="{{$employee->id}}" class="employee_id">
                 <td>{{$key+1}}</td>
                 <td>{{$employee->name}}</td>
                 <td colspan="3">
                     <div class="switch-toggle switch-3 switch-candy">
-                        <input class="present"
-                               id="present{{$key}}"
-                               name="attend_status[{{$employee->id}}]"
-                               value="present"
-                               type="radio"
-                               checked="checked">
+                        <input class="present" id="present{{$key}}" name="attend_status{{$key}}" value="present" type="radio" checked="checked">
 
                         <label for="present{{$key}}">Present</label>
-                        <input class="leave"
-                               id="leave{{$key}}"
-                               name="attend_status[{{$employee->id}}]"
-                               value="Leave"
-                               type="radio">
+                        <input class="leave" id="leave{{$key}}" name="attend_status{{$key}}" value="Leave" type="radio">
 
                         <label for="leave{{$key}}">Leave</label>
-                        <input class="absent"
-                               id="absent{{$key}}"
-                               name="attend_status[{{$employee->id}}]"
-                               value="Absent"
-                               type="radio">
+                        <input class="absent" id="absent{{$key}}" name="attend_status{{$key}}" value="Absent" type="radio">
 
                         <label for="absent{{$key}}">Absent</label>
                         <a></a>

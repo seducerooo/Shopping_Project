@@ -37,29 +37,34 @@ class AttendanceController extends Controller
         return to_route('employee.attend.list')->with($notification);
 
     }
-    public function EditEmployeeAttendance(string $date){
-        $employees = Employee::query()->get()->all();
-        $editData = Attendance::query()->where('date',$date)->get();
-        return view('backend.attendance.edit_employee_attend',compact('employees','editData'));
+    public function EditEmployeeAttendance(string $id){
+
+        $employee =  Employee::query()->where('id',$id)->get()->first();
+
+
+        return view('backend.attendance.edit_employee_attend',compact('employee'));
     }
     public function UpdateEmployeeAttendance(Request $request,string $id){
-        $count_employee = count($request['employee_id']);
+//dd($request);
+        foreach ($request['attend_status'] as  $attendance){
 
-        for ($i = 0  ; $i < $count_employee ; $i++){
-            $attend_status = 'attend_status'.$i;
-            $attendance_store = Attendance::query()->findOrFail($id);
-            $attendance_store['date'] = date("y-m-d",strtotime($request['date']));
-            $attendance_store['employee_id'] = array($request['employee_id'][$i]);
-            $attendance_store['attend_status'] = $attend_status[0];
-            $attendance_store->save();
+            $attendance_update = Attendance::query()->findOrFail($id);
+            $attendance_update['date'] = date('Y-m-d', strtotime($request['date']));
+            $attendance_update['attend_status'] = $attendance;
+            $attendance_update->save();
         }
         $notification = array([
-            'message' => 'Employee Attending Recorde Updated Successfully',
+            'message' => 'Employee Attending Recorde Stored Successfully',
             'alert-type' => 'success'
         ]);
         return to_route('employee.attend.list')->with($notification);
-
-
     }
+
+
+
+
+
+
+
 
 }

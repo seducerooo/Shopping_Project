@@ -12,4 +12,7 @@ class Employee extends Model
     public function advance(){
         return $this->belongsTo(AdvanceSalary::class,'id','employee_id');
     }
+    public function attendance(){
+        return $this->belongsTo(Attendance::class,'id','employee_id');
+    }
 }

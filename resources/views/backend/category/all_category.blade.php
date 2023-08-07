@@ -47,8 +47,9 @@
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->category_name }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a href="#" class="btn btn-danger" id="delete"><i class="fa-solid fa-trash"></i></a>
+                                            <a href="{{ route('edit.category',[ 'id' => $category->id]) }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+
+                                            <a href="{{ route('destroy.category',$category->id) }}" class="btn btn-danger" id="delete"><i class="fa-solid fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -138,6 +138,10 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/all/category','AllCategory')->name('all.category');
         Route::post('/store/category','StoreCategory')->name('category.store');
 
+        Route::get('/delete/category/{id}','DestroyCategory')->name('destroy.category');
+        Route::get('/edit/category/{id}','EditCategory')->name('edit.category');
+        Route::post('/update/category/{id}','UpdateCategory')->name('category.update');
+
     });
 
 });

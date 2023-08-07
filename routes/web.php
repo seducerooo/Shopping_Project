@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AttendanceController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
 use App\Http\Controllers\backend\SalaryController;
@@ -129,6 +130,15 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/view/employee/attend/{id}','ViewEmployeeAttendance')->name('view.employee.attend');
     });
 
+
+
+
+    // Category Controller
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('/all/category','AllCategory')->name('all.category');
+        Route::post('/store/category','StoreCategory')->name('category.store');
+
+    });
 
 });
 

@@ -40,8 +40,6 @@ class AttendanceController extends Controller
     public function EditEmployeeAttendance(string $id){
 
         $employee =  Employee::query()->where('id',$id)->get()->first();
-
-
         return view('backend.attendance.edit_employee_attend',compact('employee'));
     }
     public function UpdateEmployeeAttendance(Request $request,string $id){
@@ -58,6 +56,14 @@ class AttendanceController extends Controller
             'alert-type' => 'success'
         ]);
         return to_route('employee.attend.list')->with($notification);
+    }
+
+
+    public function ViewEmployeeAttendance(string $id){
+
+        $allEmployee =  Employee::query()->where('id',$id)->get()->first();
+        return view('backend.attendance.details_employee_attend',compact('allEmployee'));
+
     }
 
 

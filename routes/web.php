@@ -124,6 +124,9 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/store/employee/attend','EmployeeAttendanceStore')->name('employee.attend.store');
         Route::get('/edit/employee/attend/{id}','EditEmployeeAttendance')->name('edit.employee.attend');
         Route::post('/update/employee/attend/{id}','UpdateEmployeeAttendance')->name('update.employee.attend');
+
+
+        Route::get('/view/employee/attend/{id}','ViewEmployeeAttendance')->name('view.employee.attend');
     });
 
 

@@ -11,14 +11,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <a href="{{ route('add.employee.attend') }}" class="btn btn-primary rounded-pill waves-effect waves-light">
-                                    Add Employee Attendance
-                                </a>
-                            </ol>
-                        </div>
-                        <h4 class="page-title">All attendance</h4>
+                        <h4 class="page-title">All Employee</h4>
                     </div>
                 </div>
             </div>
@@ -37,32 +30,26 @@
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Date</th>
-                                    <th>Action</th>
+                                    <th>Attend Status</th>
                                 </tr>
                                 </thead>
 
 
                                 <tbody>
-                                @foreach($allData as $data)
                                     <tr>
-                                        <td>{{ $data->id }}</td>
+                                        <td>{{ $allEmployee['id'] }}</td>
                                         <td><img
-                                                src="{{ !empty($data['employee']['image']) ?
-                                                asset($data['employee']['image']) :
+                                                src="{{ !empty($allEmployee->image) ?
+                                                asset($allEmployee->image) :
                                                 url('upload/no_image.jpg') }}"
                                                 width="50px"
                                                 height="40px"
                                             />
                                         </td>
-                                        <td>{{ $data['employee']['name'] }}</td>
-                                        <td>   {{ date('y-m-d',strtotime($data->date))  }}</td>
-                                        <td>
-                                            <a href="{{ route('view.employee.attend',['id' => $data['employee']['id']]) }}" class="btn btn-primary">view</a>
-                                            <a href="{{ route('edit.employee.attend',['id' => $data['employee']['id']]) }}" class="btn btn-primary">Edit</a>
-
-                                        </td>
+                                        <td>{{ $allEmployee->name }}</td>
+                                        <td>{{ $allEmployee['attendance']['date'] }}</td>
+                                        <td>{{ $allEmployee['attendance']['attend_status'] }}</td>
                                     </tr>
-                                @endforeach
 
                                 </tbody>
                             </table>

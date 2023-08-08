@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AttendanceController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\EmployeeController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\backend\SalaryController;
 use App\Http\Controllers\Backend\SupplierController;
 use App\Http\Controllers\ProfileController;
@@ -141,6 +142,23 @@ Route::middleware(['auth'])->group(function (){
         Route::get('/delete/category/{id}','DestroyCategory')->name('destroy.category');
         Route::get('/edit/category/{id}','EditCategory')->name('edit.category');
         Route::post('/update/category/{id}','UpdateCategory')->name('category.update');
+
+    });
+
+
+
+
+
+
+
+    // Product Controller
+    Route::controller(productController::class)->group(function(){
+        Route::get('/all/product','AllProduct')->name('all.product');
+        Route::get('/add/product','AddProduct')->name('add.product');
+
+        Route::get('/edit/product/{id}','EditProduct')->name('product.edit');
+        Route::post('/edit/product/{id}','EditProduct')->name('product.update');
+        Route::get('/delete/product/{id}','DestroyProduct')->name('product.destroy');
 
     });
 

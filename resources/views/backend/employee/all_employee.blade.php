@@ -61,8 +61,8 @@
                                     <td>{{ $employee->phone }}</td>
                                     <td>{{ $employee->salary }}</td>
                                     <th>
-                                        <a href="{{ route('employee.edit',$employee->id) }}" class="btn btn-primary">edit</a>
-                                        <a href="{{ route('employee.destroy',$employee->id) }}" class="btn btn-danger" id="delete">delete</a>
+                                        <a href="{{ route('employee.edit',$employee->id) }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="{{ route('employee.destroy',$employee->id) }}" class="btn btn-danger" id="delete"><i class="fa-solid fa-trash"></i></a>
                                     </th>
                                 </tr>
                                 @endforeach

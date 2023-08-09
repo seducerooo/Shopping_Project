@@ -155,6 +155,7 @@ Route::middleware(['auth'])->group(function (){
     Route::controller(productController::class)->group(function(){
         Route::get('/all/product','AllProduct')->name('all.product');
         Route::get('/add/product','AddProduct')->name('add.product');
+        Route::post('/store/product','StoreProduct')->name('store.product');
 
         Route::get('/edit/product/{id}','EditProduct')->name('product.edit');
         Route::post('/edit/product/{id}','EditProduct')->name('product.update');

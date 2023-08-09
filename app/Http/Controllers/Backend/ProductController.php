@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -13,5 +16,55 @@ class ProductController extends Controller
 
         $product = Product::query()->latest()->get();
         return view('backend.product.all_product',compact('product'));
+    }
+    public function AddProduct(){
+        $category = Category::query()->latest()->get();
+        $supplier = Supplier::query()->latest()->get();
+        return view('backend.product.add_product',compact('category','supplier'));
+    }
+    public function StoreProduct(Request $request){
+        $request->validate(
+            [
+                'product_name' => 'required',
+                'category_id' => 'required',
+                'supplier_id' => 'required',
+                'product_code' => 'required',
+                'product_image' => 'required',
+            ],
+            [
+
+                'required.product_name' => 'Please Fill Product Name',
+                'required.category_id' => 'Please Fill Category Name',
+                'required.supplier_id' => 'Please Fill Supplier Name',
+                'required.product_code' => 'Please Fill Product Code',
+                'required.product_image' => 'Please Fill Product Image',
+            ]
+        );
+
+
+
+        $image = $request->file('product_image');
+        $name_gen = hexdec(uniqid()). '.' . $image->getClientOriginalExtension();
+        Image::make($image)->resize(300,300)->save('upload/product_images/'.$name_gen);
+        $save_url = 'upload/product_images/'.$name_gen;
+        $product_recorde = new Product();
+        $product_recorde->product_name = $request['product_name'];
+        $product_recorde->category_id = $request['category_id'];
+        $product_recorde->supplier_id = $request['supplier_id'];
+        $product_recorde->product_code = $request['product_code'];
+        $product_recorde->product_garage = $request['product_garage'];
+        $product_recorde->product_image = $save_url;
+        $product_recorde->product_store = $request['product_store'];
+        $product_recorde->buying_date = $request['buying_date'];
+        $product_recorde->expire_date = $request['expire_date'];
+        $product_recorde->buying_price = $request['buying_price'];
+        $product_recorde->selling_price = $request['selling_price'];
+        $product_recorde->save();
+        $notification = array(
+            'message' => 'Customer Recorde Stored Successfully',
+            'alert-type' => 'success'
+        );
+        return to_route('all.product')->with($notification);
+
     }
 }

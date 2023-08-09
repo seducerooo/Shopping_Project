@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ProductController extends Controller
 {
@@ -41,7 +42,14 @@ class ProductController extends Controller
             ]
         );
 
-
+        $pcode = IdGenerator::generate(
+            [
+                'table' => 'products',
+                'field' => 'product_code',
+                'length' => 4,
+                'prefix' => 'PC'
+            ]
+        );
 
         $image = $request->file('product_image');
         $name_gen = hexdec(uniqid()). '.' . $image->getClientOriginalExtension();
@@ -51,7 +59,7 @@ class ProductController extends Controller
         $product_recorde->product_name = $request['product_name'];
         $product_recorde->category_id = $request['category_id'];
         $product_recorde->supplier_id = $request['supplier_id'];
-        $product_recorde->product_code = $request['product_code'];
+        $product_recorde->product_code = $pcode;
         $product_recorde->product_garage = $request['product_garage'];
         $product_recorde->product_image = $save_url;
         $product_recorde->product_store = $request['product_store'];

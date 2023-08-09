@@ -161,6 +161,9 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/update/product/{id}','UpdateProduct')->name('product.update');
         Route::get('/delete/product/{id}','DestroyProduct')->name('product.destroy');
 
+
+        Route::get('/barcode/product/{id}','BarcodeProduct')->name('barcode.product');
+
     });
 
 });

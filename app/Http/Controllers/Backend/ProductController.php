@@ -132,4 +132,10 @@ class ProductController extends Controller
         );
         return to_route('all.product')->with($notification);
     }
+
+
+    public function BarcodeProduct(string $id){
+        $product = Product::query()->findOrFail($id);
+        return view('backend.product.barcode_product',compact('product'));
+    }
 }

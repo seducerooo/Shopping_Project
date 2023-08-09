@@ -158,7 +158,7 @@ Route::middleware(['auth'])->group(function (){
         Route::post('/store/product','StoreProduct')->name('store.product');
 
         Route::get('/edit/product/{id}','EditProduct')->name('product.edit');
-        Route::post('/edit/product/{id}','EditProduct')->name('product.update');
+        Route::post('/update/product/{id}','UpdateProduct')->name('product.update');
         Route::get('/delete/product/{id}','DestroyProduct')->name('product.destroy');
 
     });

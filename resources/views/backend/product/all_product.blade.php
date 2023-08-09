@@ -63,7 +63,7 @@
                                         <td>{{ $item->product_code }}</td>
                                         <td>{{ $item->selling_price }}</td>
                                         <th>
-                                            <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a href="{{ route('product.edit',['id' => $item->id]) }}" class="btn btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
                                             <a href="{{ route('product.destroy',$item->id) }}" class="btn btn-danger" id="delete"><i class="fa-solid fa-trash"></i></a>
                                         </th>
                                     </tr>

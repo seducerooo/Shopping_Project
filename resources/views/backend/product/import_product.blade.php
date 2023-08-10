@@ -12,7 +12,7 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <a href="#" class="btn btn-primary rounded-pill waves-effect waves-light">
+                                <a href="{{ route('export') }}" class="btn btn-primary rounded-pill waves-effect waves-light">
                                     <i class="fa-solid fa-download"></i> Download Xlsx File
                                 </a>
                             </ol>
@@ -32,7 +32,7 @@
                             <div class="tab-content">
 
                                 <div class="" id="settings">
-<form action="{{ route('store.product') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('import') }}" method="post" enctype="multipart/form-data">
     @csrf
 
     <div class="row">
@@ -45,12 +45,9 @@
                 <br><br>
                 <input type="file"
                        name="import_file"
-                       class="form-control  @error('product_name') is-invalid @enderror"
+                       class="form-control"
                        id="import_file"
                        value="">
-                @error('product_name')
-                <span class="text-danger"> {{ $message }} </span>
-                @enderror
             </div>
         </div>
 

@@ -96,21 +96,21 @@
 
 
 
-        <div class="col-md-6">
-            <div class="mb-3">
-                <label for="product_code" class="form-label">Product Code</label>
-                <input type="text"
-                       name="product_code"
-                       class="form-control @error('product_code') is-invalid @enderror"
-                       id="product_code"
-                       placeholder="Enter Product Code"
-                       value="">
+{{--        <div class="col-md-6">--}}
+{{--            <div class="mb-3">--}}
+{{--                <label for="product_code" class="form-label">Product Code</label>--}}
+{{--                <input type="text"--}}
+{{--                       name="product_code"--}}
+{{--                       class="form-control @error('product_code') is-invalid @enderror"--}}
+{{--                       id="product_code"--}}
+{{--                       placeholder="Enter Product Code"--}}
+{{--                       value="">--}}
 
-                @error('product_code')
-                <span class="text-danger"> {{ $message }} </span>
-                @enderror
-            </div>
-        </div> <!-- end col -->
+{{--                @error('product_code')--}}
+{{--                <span class="text-danger"> {{ $message }} </span>--}}
+{{--                @enderror--}}
+{{--            </div>--}}
+{{--        </div> <!-- end col -->--}}
 
 
 

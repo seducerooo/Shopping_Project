@@ -29,7 +29,6 @@ class ProductController extends Controller
                 'product_name' => 'required',
                 'category_id' => 'required',
                 'supplier_id' => 'required',
-                'product_code' => 'required',
                 'product_image' => 'required',
             ],
             [
@@ -37,7 +36,6 @@ class ProductController extends Controller
                 'required.product_name' => 'Please Fill Product Name',
                 'required.category_id' => 'Please Fill Category Name',
                 'required.supplier_id' => 'Please Fill Supplier Name',
-                'required.product_code' => 'Please Fill Product Code',
                 'required.product_image' => 'Please Fill Product Image',
             ]
         );
@@ -146,4 +144,9 @@ class ProductController extends Controller
         $product = Product::query()->findOrFail($id);
         return view('backend.product.barcode_product',compact('product'));
     }
+
+    public function ImportProduct(){
+        return view('backend.product.import_product');
+    }
+
 }

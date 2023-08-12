@@ -162,18 +162,25 @@
 
 
                 <li>
-                    <a href="#sidebarCrm" data-bs-toggle="collapse">
+                    <a href="#expense" data-bs-toggle="collapse">
                         <i class="mdi mdi-account-multiple-outline"></i>
-                        <span> CRM </span>
+                        <span> Expense </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarCrm">
+                    <div class="collapse" id="expense">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="crm-dashboard.html">Dashboard</a>
+                                <a href="{{ route('add.expense') }}">Add Expense</a>
                             </li>
                             <li>
-                                <a href="crm-contacts.html">Contacts</a>
+                                <a href="{{ route('today.expense') }}">Today Expense</a>
+                            </li>
+
+                            <li>
+                                <a href="{{ route('month.expense') }}">Monthly Expense</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('year.expense') }}">Yearly Expense</a>
                             </li>
 
                         </ul>
